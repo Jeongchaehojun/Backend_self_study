@@ -1,0 +1,19 @@
+이건 공부하는 회고록
+2025.11.16
+
+cd ~/Documents/Development
+mkdir my_project_1116   #프로젝트 폴더 생성
+cd my_project_1116
+python3 -m venv .venv #가상환경 생성
+ls -a
+open .venv #가상환경 폴더 열기
+source .venv/bin/activate #가상환경 활성
+pip install django #장고 설치
+
+#장고 실행
+#포트를 사용하고 있으면 또 실행 다른거 못시킴
+cd my_project_1116
+python3 manage.py runserver
+
+deactivate #가상환경 비활성
+
