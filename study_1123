@@ -1,0 +1,53 @@
+테이블 = 로우 + 칼럼
+
+한 개 이상의 테이블을 모아서 함. 여러 테이블 모은게 데이터베이스.
+데이터베이스 여러개 모은게 데이터베이스서버
+
+MySQL 다운
+root_password
+
+ORM의 역할: Model 인스턴스를 통해 object 처럼 활용
+SQL로 자동으로 변환되어서 진행됨.
+% pip install mysqlclient
+utf8mb4는 4바이트 문자 지원 (이모지 등등)
+db연결 확인:
+python manage.py migrate
+python manage.py runserver
+
+cd ~/Documents/Development
+mkdir project2_1123
+cd project2_1123
+python3 -m venv venv
+source venv/bin/activate
+pip install django 
+
+proj 안에 settings.py안에 DATABASES 설정 변경
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test_db',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'CHARSET': 'utf8mb4',
+    }
+}
+그리고 새로운 터미널 띄우기(vs코드에서는 자동으로 venv 실행해줌)
+pip install mysqlclient
+python manage.py migrate
+python manage.py runserver
+
+#여기서부터 뭔가 안됨. ㅠㅠ 근데 일단 모델 만들기 배움
+python manage.py startapp restaurant #레스토랑 만들어지고 파이썬 파일들 만들어짐
+settings.py에 INSTALLED_APPS에 'restaurant.apps.RestaurantConfig' 추가
+다시 runserver
+그 다음에 models.py에 모델 만들기
+class AModel(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=200)
+    phone_number = models.CharField(max_length=20)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+python manage.py makemigrations restaurant#소문자로 마이그레이션 됨
+python manage.py migrate#테이블이 실제로 만들어짐
+# 오늘 배운거: ORM, django에서 mysql연결, 모델 만들기, 마이그레이션

@@ -1,0 +1,25 @@
+모델 어드민
+python manage.py createsuperuser # 슈퍼 유저 생성 
+
+관리자 비밀번호는 존나 어렵게 만들어야 한다
+
+로그인하려면 실행해야함
+python manage.py runserver
+
+주소 뒤에 /admin 치면 관리자 페이지 나옴
+아까 등록해둔 것으로 로그인 가능
+
+#어드민 등록
+from django.contrib import admin
+from .models import Restaurant
+admin.site.register(Restaurant)
+
+MySQL말고 SQLite3로 진행함 <- 왤케 와리가리하냐
+./inialize
+주소 뒤에 /admin 치면 관리자 페이지 나옴
+로그인 하고 나면 등록한 모델이 보임
+앱을 추가하지 않으면 안보임
+아니 왜 또 지맘대로 migrations에다가 가게 이름 데이터 필드들을 많이 만들어놓았냐??
+
+migrate 뜻은 이전하다
+마이그레이션: 모델의 변경사항을 데이터베이스에 반영하는 것
